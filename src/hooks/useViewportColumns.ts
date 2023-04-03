@@ -122,6 +122,10 @@ export function useViewportColumns<R, SR>({
       }
     }
 
+    if(viewportColumns.find(i => i.key !== 'FROZEN_RIGHT_COLUMN') && columns.find(i => i.key === 'FROZEN_RIGHT_COLUMN')) {
+      viewportColumns.push({...columns[columns.length - 1], cellClass: 'RIGHT_COLUMN_FROZEN_CLASS'});
+    }
+    
     return { viewportColumns, flexWidthViewportColumns };
   }, [startIdx, colOverscanEndIdx, columns]);
 
